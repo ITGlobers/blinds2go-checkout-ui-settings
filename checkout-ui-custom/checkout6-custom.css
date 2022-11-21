@@ -1,0 +1,84 @@
+/* ---------------------------------------------- Global -------------------------------------------------------- */
+@font-face {
+    font-family: "Raleway";
+    font-style : normal;
+    src        : local("Raleway"),
+    url("https://fonts.cdnfonts.com/css/raleway-5.ttf") format("ttf");
+}
+
+body{
+    --main-color: #3b214f;
+    color: var(--main-color);
+    font-family: 'Raleway';
+}
+
+
+/* ---------------------------------------------- Header section -------------------------------------------------------- */
+
+#header-container{
+    max-width: 1280px;
+    display: flex;
+    padding: 2.19rem 0;
+}
+
+.header-payments{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+/* ---------------------------------------------- reassurance section -------------------------------------------------------- */
+.reassurance-bar{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* ---------------------------------------------- Cart section -------------------------------------------------------- */
+.empty-cart-title{
+    color: var(--main-color);
+}
+
+.container-main.container-cart{
+    max-width: 1280px;
+}
+
+#cart-choose-products img{
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+
+.link-choose-products{
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: max-content;
+    align-items: center;
+    background: #0275d8;
+    border: none;
+    border-radius: 4px;
+    font-size: 0;
+    padding: 0.9rem 1.4rem;
+}
+
+.link-choose-products::before{
+    content: "Continue Shopping";
+    background: #0275d8;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.link-choose-products:hover{
+    background: #0067BD;
+    border: none;
+}
+
+
+@media screen and (min-width: 960px){
+    img.header-logo{
+        width: 401px;
+        height: 72px
+    }
+}
