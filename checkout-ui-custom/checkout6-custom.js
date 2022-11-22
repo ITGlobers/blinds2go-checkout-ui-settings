@@ -1,36 +1,36 @@
 const shoppingCart = {
   header: {
     init: function () {
+      const header = $('.container').first().attr('id', 'header-container')
 
-        const header = $('.container').first().attr("id", "header-container")
+      header.append(
+        '<div class="header-payments"> <img class="payment-methods" src="/arquivos/header-payments.svg"/> </div>'
+      )
 
-        header.append('<div class="header-payments"> <img class="payment-methods" src="/arquivos/header-payments.svg"/> </div>')
+      const headerLink = $('.container a').first().addClass('header-link')
 
-        const headerLink = $('.container a').first().addClass('header-link')
+      headerLink.text('')
 
-        headerLink.text('')
-
-        headerLink.append('<img class="header-logo" src="/arquivos/logo.svg"/>')
+      headerLink.append('<img class="header-logo" src="/arquivos/logo.svg"/>')
     },
   },
 
-  mainCart:{
-    init: function(){
-        $('#cart-choose-products').prepend('<img src="/arquivos/left-arrow-white.svg" />')
+  mainCart: {
+    init: function () {
+      $('#cart-choose-products').prepend('<img src="/arquivos/left-arrow-white.svg" />')
 
-        const toOrderFormBtn = $('#cart-to-orderform')
+      const toOrderFormBtn = $('#cart-to-orderform')
 
-        toOrderFormBtn.text('Secure checkout')
+      toOrderFormBtn.text('Secure checkout')
 
-        toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
-        toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
+      toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
+      toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
 
-        $('td.quantity-price').attr('id', 'quantity-total')
+      $('td.quantity-price').attr('id', 'quantity-total')
 
+      const mainCart = $('.container-cart')
 
-        const mainCart = $('.container-cart')
-
-        const reassuranceBar = `
+      const reassuranceBar = `
         <div class="outer-reassurance">
         <div class="reassurance-bar">
             <div class="reassurance-item">
@@ -58,7 +58,7 @@ const shoppingCart = {
         </div>
         `
 
-        const orderFormHeader = `
+      const orderFormHeader = `
           <div class="order-form-header">
             <div class="orderform-header-text">
               <h1 id="orderform-heading">Your shopping basket</h1>
@@ -74,15 +74,14 @@ const shoppingCart = {
           </div>
         `
 
-        mainCart.prepend([reassuranceBar, orderFormHeader])
+      mainCart.prepend([reassuranceBar, orderFormHeader])
 
-        $('th.product').attr('id', 'cart-header-product')
-
-    }
+      $('th.product').attr('id', 'cart-header-product')
+    },
   },
 
   continueShopping: {
-    init: function(){
+    init: function () {
       const cartContainer = $('.cart-template-holder')
 
       const continueShopping = `
@@ -92,11 +91,11 @@ const shoppingCart = {
       `
 
       cartContainer.append(continueShopping)
-    }
+    },
   },
 
   summaryHeader: {
-    init: function(){
+    init: function () {
       const totalizers = $('.summary-totalizers')
 
       const orderFormItems = Object.assign(window.vtexjs.checkout.orderForm.items)
@@ -110,6 +109,73 @@ const shoppingCart = {
       `
 
       totalizers.prepend(header)
+    },
+  },
+
+  secureCheckoutWarning:{
+    init: function(){
+
+    }
+  }
+}
+
+const checkoutPage = {
+  removeItems: {
+    init: function () {
+      $('.summary-coupon-wrap').remove()
+      $('.custom-cart-template-wrap .summary-cart-template-holder').remove()
+      $('order-form-header').remove()
+    },
+  },
+
+  orderFormHeader: {
+    init: function () {
+      const checkoutContainer = $('.container-order-form')
+
+      const reassuranceBar = `
+      <div class="outer-reassurance">
+      <div class="reassurance-bar">
+          <div class="reassurance-item">
+              <img class="reassurance-item-image five-icon" src="/arquivos/reassurance-5.svg" />
+              <div class="reassurance-item-text">
+                  <p class="reassurance-title">5 year guarantee</p>
+                  <p class="reassurance-subtitle">Peace of mind at no extra cost</p>
+              </div>
+          </div>
+          <div class="reassurance-item">
+              <img class="reassurance-item-image segtigo-icon" src="/arquivos/segtigo-logo.svg" />
+              <div class="reassurance-item-text">
+                  <p class="reassurance-title">Fast, Easy & Safe</p>
+                  <p class="reassurance-subtitle">100% Secure Checkout</p>
+              </div>
+          </div>
+          <div class="reassurance-item">
+              <img class="reassurance-item-image truck-icon" src="/arquivos/reassurance-truck.svg" />
+              <div class="reassurance-item-text">
+                  <p class="reassurance-title">Free UK Delivery</p>
+                  <p class="reassurance-subtitle">On all orders over £199</p>
+              </div>
+          </div>
+      </div>
+      </div>
+      `
+
+      const orderFormHeader = `
+      <div class="checkout-header">
+        <div class="checkout-header-text">
+          <h1 id="checkout-heading">Complete your order</h1>
+        </div>
+      </div>
+    `
+
+    checkoutContainer.prepend([reassuranceBar, orderFormHeader])
+    },
+  },
+
+  clientInfo:{
+    init:function(){
+      $('.box-client-info-pf .client-notice').text('Cart holder details')
+      $('.custom-cart-template-wrap h2').text('Order Summary')
     }
   }
 }
@@ -121,6 +187,29 @@ $(document).on('ready', function () {
       shoppingCart.mainCart.init()
       shoppingCart.continueShopping.init()
       shoppingCart.summaryHeader.init()
+    }, 500)
+  }
+
+  if (window.location.hash === '#/email') {
+    setTimeout(() => {
+      shoppingCart.header.init()
+      shoppingCart.mainCart.init()
+      shoppingCart.summaryHeader.init()
+      checkoutPage.removeItems.init()
+      checkoutPage.orderFormHeader.init()
+      checkoutPage.clientInfo.init()
+    }, 500)
+  }
+})
+
+$(window).on('hashchange', function () {
+  if (window.location.hash === '#/email') {
+    setTimeout(() => {
+      shoppingCart.header.init()
+      shoppingCart.mainCart.init()
+      checkoutPage.removeItems.init()
+      checkoutPage.orderFormHeader.init()
+      checkoutPage.clientInfo.init()
     }, 500)
   }
 })
