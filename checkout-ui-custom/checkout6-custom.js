@@ -79,6 +79,38 @@ const shoppingCart = {
         $('th.product').attr('id', 'cart-header-product')
 
     }
+  },
+
+  continueShopping: {
+    init: function(){
+      const cartContainer = $('.cart-template-holder')
+
+      const continueShopping = `
+        <div class="continue-shopping-container">
+          <a href="/"> <img src="/arquivos/left-arrow-white.svg" /><span>Continue Shopping</span></a>
+        </div>
+      `
+
+      cartContainer.append(continueShopping)
+    }
+  },
+
+  summaryHeader: {
+    init: function(){
+      const totalizers = $('.summary-totalizers')
+
+      const orderFormItems = Object.assign(window.vtexjs.checkout.orderForm.items)
+
+      const items = orderFormItems.length
+
+      const header = `
+        <div class="summary-totalizer-header">
+          <p class="summary-totalizer-text">You have ${items} items in your basket</p>
+        </div>
+      `
+
+      totalizers.prepend(header)
+    }
   }
 }
 
@@ -87,6 +119,8 @@ $(document).on('ready', function () {
     setTimeout(() => {
       shoppingCart.header.init()
       shoppingCart.mainCart.init()
+      shoppingCart.continueShopping.init()
+      shoppingCart.summaryHeader.init()
     }, 500)
   }
 })

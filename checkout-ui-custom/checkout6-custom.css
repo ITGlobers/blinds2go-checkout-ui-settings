@@ -18,7 +18,7 @@
 body{
     --main-color: #3b214f;
     color: var(--main-color);
-    font-family: 'Nunito Sans';
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 /* ---------------------------------------------- Header section -------------------------------------------------------- */
@@ -42,7 +42,7 @@ body{
     justify-content: space-around;
     margin-bottom: 20px;
     background-color: #eee;
-    padding: 3px 0;
+    padding: 3px 7rem;
 }
 
 .reassurance-item{
@@ -101,7 +101,7 @@ body{
     font-weight: 600 !important;
     margin-top: 0;
     color: var(--main-color) !important;
-    font-family: "Raleway";
+    font-family: "Raleway", sans-serif;
 }
 
 .orderform-header-images img{
@@ -124,7 +124,30 @@ body{
 #quantity-total{
     display: inline !important;
 }
+th.product,
+th.quantity{
+    font-size: 0;
+}
 
+th.product::before{
+    content: "Items";
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+th.quantity::before{
+    content: "QTY";
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+th.product-price,
+th.quantity-price{
+    font-size: 13px;
+    font-weight: 400;
+}
 
 .container-main.container-cart{
     max-width: none;
@@ -255,12 +278,46 @@ td.quantity{
     content: url("/arquivos/cross-icon.svg") !important;
 }
 
+
+.continue-shopping-container{
+    display: flex;
+    max-height: 3rem;
+}
+
+.continue-shopping-container a{
+    display: flex;
+    justify-content: start;
+    background: #0275d8;
+    border-radius: 4px;
+    padding: 1rem 1.8rem;
+}
+
+.continue-shopping-container a img{
+    width: 15px;
+    margin-right: 5px;
+}
+
+.continue-shopping-container a span{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 /* --------------------------------------------------------- Summary section ---------------------------------------------------- */
 
 .summary-template-holder{
     border-radius: 0;
     border: 1px solid #dddddd!important;
     width: 31% !important;
+}
+
+.summary-coupon-wrap{
+    display: none;
+}
+
+.summary-totalizer-text{
+    font-size: 16px;
 }
 
 tfoot td.monetary{
@@ -280,6 +337,11 @@ tfoot td.info::before{
     font-weight: 400;
 }
 
+.totalizers-list{
+    border: none !important;
+    padding: 0 !important;
+}
+
 .totalizers-list .monetary{
     font-size: 16px !important;
 }
@@ -292,6 +354,24 @@ tfoot td.info::before{
     content: "Order subtotal";
     font-size: 16px !important;
 }
+
+.shipping-calculate{
+    display: block !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
+    padding-top: 2px !important;
+}
+
+.shipping-calculate .info span{
+    font-size: 0;
+}
+
+.shipping-calculate .info span::before{
+    font-size: 16px;
+    content: "Delivery";
+}
+
+
+/* ------------------------------------------------------------- Mobile ----------------------------------------------- */
 
 @media screen and (min-width: 960px){
     img.header-logo{
