@@ -20,8 +20,13 @@ const shoppingCart = {
 
         const toOrderFormBtn = $('#cart-to-orderform')
 
+        toOrderFormBtn.text('Secure checkout')
+
         toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
         toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
+
+        $('td.quantity-price').attr('id', 'quantity-total')
+
 
         const mainCart = $('.container-cart')
 

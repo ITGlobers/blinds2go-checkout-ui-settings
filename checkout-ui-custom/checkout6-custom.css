@@ -5,13 +5,20 @@
     font-family: "Raleway";
     font-style : normal;
     src        : local("Raleway"),
-    url("https://fonts.cdnfonts.com/css/raleway-5.ttf") format("ttf");
+    url("https://www.blinds-2go.co.uk/assets/fonts/raleway/raleway-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Nunito Sans";
+    font-style : normal;
+    src        : local("Nunito Sans"),
+    url("https://www.blinds-2go.co.uk/assets/fonts/nunitosans/nunitosans.woff2") format("woff2");
 }
 
 body{
     --main-color: #3b214f;
     color: var(--main-color);
-    font-family: 'Raleway';
+    font-family: 'Nunito Sans';
 }
 
 /* ---------------------------------------------- Header section -------------------------------------------------------- */
@@ -35,6 +42,7 @@ body{
     justify-content: space-around;
     margin-bottom: 20px;
     background-color: #eee;
+    padding: 3px 0;
 }
 
 .reassurance-item{
@@ -78,8 +86,6 @@ body{
 .reassurance-subtitle{
     font-size: 12px;
 }
-
-
 /* ---------------------------------------------- Cart header ----------------------------------------------------------*/
 
 .order-form-header{
@@ -92,13 +98,15 @@ body{
 
 #orderform-heading{
     font-size: 30px !important;
+    font-weight: 600 !important;
     margin-top: 0;
+    color: var(--main-color) !important;
+    font-family: "Raleway";
 }
 
 .orderform-header-images img{
     width: 144px;
 }
-
 
 /* ---------------------------------------------- Cart section -------------------------------------------------------- */
 .empty-cart-title{
@@ -108,6 +116,15 @@ body{
 #cartLoadedDiv{
     width: calc(70% - 30px);
 }
+
+.quantity-price{
+    display: inline !important;
+}
+
+#quantity-total{
+    display: inline !important;
+}
+
 
 .container-main.container-cart{
     max-width: none;
@@ -176,7 +193,6 @@ body{
     font-weight: 600;
 }
 
-
 #cart-to-orderform:hover{
     background: #e5800c;
 }
@@ -204,12 +220,39 @@ body{
 
 #cart-header-product{
     padding-left: 1.3rem !important;
-    width: calc(100% - 254px) !important;
+    width: calc(100% - 339px) !important;
+}
+
+.v-custom-product-item-wrap{
+    align-items: flex-start !important;
 }
 
 .product-image{
     padding-left: 15px !important;
     padding-right: 15px !important;
+}
+
+td.quantity{
+    border: none !important;
+    margin: 0 !important;
+}
+
+.icon-plus-sign{
+    content: url('/arquivos/plus-icon.svg');
+    width: 24px;
+}
+
+.icon-minus-sign{
+    content: url('/arquivos/minus-icon.svg');
+    width: 24px;
+}
+
+.best-price{
+    font-size: 16px;
+}
+
+.item-remove-ico::before{
+    content: url("/arquivos/cross-icon.svg") !important;
 }
 
 /* --------------------------------------------------------- Summary section ---------------------------------------------------- */
@@ -220,9 +263,52 @@ body{
     width: 31% !important;
 }
 
+tfoot td.monetary{
+    font-size: 22px !important;
+    color: #000 !important;
+    font-weight: 400 !important;
+}
+
+tfoot td.info{
+    font-size: 0 !important;
+}
+
+tfoot td.info::before{
+    content: "Order total";
+    font-size: 22px;
+    color: #000;
+    font-weight: 400;
+}
+
+.totalizers-list .monetary{
+    font-size: 16px !important;
+}
+
+.totalizers-list .info{
+    font-size: 0 !important;
+}
+
+.totalizers-list .info::before{
+    content: "Order subtotal";
+    font-size: 16px !important;
+}
+
 @media screen and (min-width: 960px){
     img.header-logo{
         width: 401px;
         height: 72px
     }
+}
+
+
+@media screen  and (max-width: 998px){
+    .cart-template{
+        flex-direction: column;
+    }
+
+    .summary-template-holder,
+    .cart-template-holder{
+        width: 98% !important;
+        margin: 0 auto;
+    }    
 }
