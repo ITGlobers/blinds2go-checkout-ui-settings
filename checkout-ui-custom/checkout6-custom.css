@@ -395,7 +395,6 @@ tfoot td.info::before{
 }
 
 .shipping-calculate{
-    display: block !important;
     border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
     padding-top: 2px !important;
 }
@@ -523,6 +522,12 @@ tfoot td.info::before{
 .client-first-name label,
 .client-email label{
     font-size: 16px;
+    color: #000 !important;
+}
+
+.totalizers-list .monetary,
+.totalizers-list .info,
+.summary-totalizer-text{
     color: #000 !important;
 }
 
