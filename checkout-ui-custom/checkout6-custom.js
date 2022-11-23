@@ -131,7 +131,12 @@ const shoppingCart = {
         </div>
       `
 
-      totalizers.prepend(header)
+      const summaryHeaderExist = $('.summary-totalizer-header')
+
+      if(summaryHeaderExist.length === 0){
+        totalizers.prepend(header)
+      }
+
     },
   },
 
@@ -145,7 +150,12 @@ const shoppingCart = {
         </tr>
       `
 
-      summarizerFooter.append(secureCheckoutMessage)
+      const secureCheckoutMessageExist = $('.secure-checkout')
+
+      if(secureCheckoutMessageExist.length === 0){
+        summarizerFooter.append(secureCheckoutMessage)
+      }
+
     }
   }
 }
@@ -199,7 +209,14 @@ const checkoutPage = {
       </div>
     `
 
-    checkoutContainer.prepend([reassuranceBar, orderFormHeader])
+    const reassuranceBarExists = $('.checkout-outer-reassurance')
+
+    const orderFormHeaderExists = $('.checkout-outer-reassurance')
+
+    if(reassuranceBarExists.length == 0 && orderFormHeaderExists.length == 0){
+      checkoutContainer.prepend([reassuranceBar, orderFormHeader])
+    }
+
     },
   },
 
@@ -207,6 +224,16 @@ const checkoutPage = {
     init:function(){
       $('.box-client-info-pf .client-notice').text('Cart holder details')
       $('.custom-cart-template-wrap h2').text('Order Summary')
+    }
+  },
+
+  paymentButtonText:{
+    init: function(){
+
+      const paymentBtn = $('#payment-data-submit span')
+
+      paymentBtn.text('Complete your order')
+      
     }
   }
 }
@@ -222,32 +249,38 @@ $(document).on('ready', function () {
     }, 500)
   }
 
-  if (window.location.hash === '#/email') {
+  if (window.location.hash === '#/email' || window.location.hash === '#/profile' || window.location.hash === '#/shipping' || window.location.hash === '#/payment') {
     setTimeout(() => {
       shoppingCart.header.init()
       shoppingCart.mainCart.init()
       shoppingCart.summaryHeader.init()
+      shoppingCart.secureCheckoutWarning.init()
       checkoutPage.orderFormHeader.init()
       checkoutPage.clientInfo.init()
+      checkoutPage.removeItems()
+      checkoutPage.paymentButtonText.init()
     }, 500)
   }
 })
 
 $(window).on('hashchange', function () {
-  if (window.location.hash === '#/email') {
+  if (window.location.hash === '#/email' || window.location.hash === '#/profile' || window.location.hash === '#/shipping' || window.location.hash === '#/payment') {
     setTimeout(() => {
       checkoutPage.removeItems()
       checkoutPage.orderFormHeader.init()
       checkoutPage.clientInfo.init()
+      shoppingCart.secureCheckoutWarning.init()
+      checkoutPage.paymentButtonText.init()
     }, 500)
   }
 
-  if (window.location.hash === '#/cart') {
+  if (window.location.hash === '#/cart' ) {
     setTimeout(() => {
       shoppingCart.mainCart.init()
       shoppingCart.continueShopping.init()
       shoppingCart.summaryHeader.init()
       shoppingCart.removeItems()
+      shoppingCart.secureCheckoutWarning.init()
     }, 500)
   }
 })
