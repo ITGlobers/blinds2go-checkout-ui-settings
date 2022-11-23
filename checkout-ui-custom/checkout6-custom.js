@@ -15,6 +15,25 @@ const shoppingCart = {
     },
   },
 
+  removeItems:function(){
+    $('.checkout-outer-reassurance').remove()
+    $('.checkout-header').remove()
+  },
+
+  quantityTotal: function(){
+    $('td.quantity-price').attr('style', 'display: inline !important')
+  },
+
+  toOrderFormBtn: function(){
+    const toOrderFormBtn = $('#cart-to-orderform')
+
+    toOrderFormBtn.text('Secure checkout')
+
+    toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
+    toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
+
+  },
+
   mainCart: {
     init: function () {
       $('#cart-choose-products').prepend('<img src="/arquivos/left-arrow-white.svg" />')
@@ -26,12 +45,12 @@ const shoppingCart = {
       toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
       toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
 
-      $('td.quantity-price').attr('id', 'quantity-total')
+      $('td.quantity-price').attr('style', 'display: inline !important')
 
       const mainCart = $('.container-cart')
 
       const reassuranceBar = `
-        <div class="outer-reassurance">
+        <div class="shopping-outer-reassurance">
         <div class="reassurance-bar">
             <div class="reassurance-item">
                 <img class="reassurance-item-image five-icon" src="/arquivos/reassurance-5.svg" />
@@ -84,13 +103,17 @@ const shoppingCart = {
     init: function () {
       const cartContainer = $('.cart-template-holder')
 
-      const continueShopping = `
-        <div class="continue-shopping-container">
-          <a href="/"> <img src="/arquivos/left-arrow-white.svg" /><span>Continue Shopping</span></a>
-        </div>
-      `
+      const containerShoppingContainer = $('.continue-shopping-container')
 
-      cartContainer.append(continueShopping)
+      if(containerShoppingContainer.length === 0){
+        const continueShopping = `
+          <div class="continue-shopping-container">
+            <a href="/"> <img src="/arquivos/left-arrow-white.svg" /><span>Continue Shopping</span></a>
+          </div>
+        `
+  
+        cartContainer.append(continueShopping)
+      }
     },
   },
 
@@ -114,18 +137,26 @@ const shoppingCart = {
 
   secureCheckoutWarning:{
     init: function(){
+      const summarizerFooter = $('.summary-totalizers tfoot')
 
+      const secureCheckoutMessage = `
+        <tr class="secure-checkout">
+        <td id="secure-cell"><img class="smart-image" src="/arquivos/lock-icon.svg"/><span>Secure Checkout - Shopping with us is always safe and secure</span></td>
+        </tr>
+      `
+
+      summarizerFooter.append(secureCheckoutMessage)
     }
   }
 }
 
 const checkoutPage = {
-  removeItems: {
-    init: function () {
+  removeItems: function () {
       $('.summary-coupon-wrap').remove()
       $('.custom-cart-template-wrap .summary-cart-template-holder').remove()
       $('order-form-header').remove()
-    },
+      $('.shopping-outer-reassurance').remove()
+      $('.order-form-header').remove()
   },
 
   orderFormHeader: {
@@ -133,7 +164,7 @@ const checkoutPage = {
       const checkoutContainer = $('.container-order-form')
 
       const reassuranceBar = `
-      <div class="outer-reassurance">
+      <div class="checkout-outer-reassurance">
       <div class="reassurance-bar">
           <div class="reassurance-item">
               <img class="reassurance-item-image five-icon" src="/arquivos/reassurance-5.svg" />
@@ -187,6 +218,7 @@ $(document).on('ready', function () {
       shoppingCart.mainCart.init()
       shoppingCart.continueShopping.init()
       shoppingCart.summaryHeader.init()
+      shoppingCart.secureCheckoutWarning.init()
     }, 500)
   }
 
@@ -195,7 +227,6 @@ $(document).on('ready', function () {
       shoppingCart.header.init()
       shoppingCart.mainCart.init()
       shoppingCart.summaryHeader.init()
-      checkoutPage.removeItems.init()
       checkoutPage.orderFormHeader.init()
       checkoutPage.clientInfo.init()
     }, 500)
@@ -205,11 +236,25 @@ $(document).on('ready', function () {
 $(window).on('hashchange', function () {
   if (window.location.hash === '#/email') {
     setTimeout(() => {
-      shoppingCart.header.init()
-      shoppingCart.mainCart.init()
-      checkoutPage.removeItems.init()
+      checkoutPage.removeItems()
       checkoutPage.orderFormHeader.init()
       checkoutPage.clientInfo.init()
     }, 500)
   }
+
+  if (window.location.hash === '#/cart') {
+    setTimeout(() => {
+      shoppingCart.mainCart.init()
+      shoppingCart.continueShopping.init()
+      shoppingCart.summaryHeader.init()
+      shoppingCart.removeItems()
+    }, 500)
+  }
+})
+
+$(window).on('orderFormUpdated.vtex', (_, orderForm) => {
+  setTimeout(()=> {
+    shoppingCart.quantityTotal()
+    shoppingCart.toOrderFormBtn()
+  }, 200)
 })

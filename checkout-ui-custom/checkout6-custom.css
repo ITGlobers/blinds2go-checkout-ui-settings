@@ -69,7 +69,8 @@ body{
     height: 27px;
 }
 
-.outer-reassurance{
+.shopping-outer-reassurance,
+.checkout-outer-reassurance{
     padding-top: .5rem;
     border-top: 3px solid #3b214f;  
 }
@@ -113,6 +114,21 @@ body{
     color: var(--main-color);
 }
 
+.total-selling-price,
+.new-product-price{
+    font-weight: 400 !important;
+    font-size: 16px;
+}
+
+td.product-price{
+    margin-right: 0 !important;
+    order: 4 !important;
+}
+
+td.quantity-price{
+    margin-left: 0 !important;
+}
+
 #cartLoadedDiv{
     width: calc(70% - 30px);
 }
@@ -121,12 +137,19 @@ body{
     display: inline !important;
 }
 
+.v-custom-product-item-wrap td.quantity-price,
 #quantity-total{
     display: inline !important;
 }
+
 th.product,
 th.quantity{
     font-size: 0;
+}
+
+th.quantity{
+    display: flex;
+    justify-content: center;
 }
 
 th.product::before{
@@ -147,6 +170,14 @@ th.product-price,
 th.quantity-price{
     font-size: 13px;
     font-weight: 400;
+}
+
+th.product-price{
+    order: 4 !important;
+}
+
+th.quantity{
+    order: 5 !important;
 }
 
 .container-main.container-cart{
@@ -242,12 +273,13 @@ th.quantity-price{
 }
 
 #cart-header-product{
-    padding-left: 1.3rem !important;
-    width: calc(100% - 339px) !important;
+    padding-left: 2.8rem !important;
+    width: calc(100% - 404px) !important;
 }
 
 .v-custom-product-item-wrap{
     align-items: flex-start !important;
+    padding-right: 2rem !important;
 }
 
 .product-image{
@@ -257,7 +289,8 @@ th.quantity-price{
 
 td.quantity{
     border: none !important;
-    margin: 0 !important;
+    margin: 0 1rem !important;
+    order: 5 !important;
 }
 
 .icon-plus-sign{
@@ -368,6 +401,33 @@ tfoot td.info::before{
 .shipping-calculate .info span::before{
     font-size: 16px;
     content: "Delivery";
+}
+
+#secure-cell{
+    padding: 0 !important;
+}
+
+.secure-checkout span{
+    font-size: 12px;
+    font-weight: 400;
+    color: #bdc8ce;
+}
+
+.smart-image{
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}
+
+.summary-template-holder .cart-links-bottom{
+    margin-top: 20px !important;
+}
+
+.cart-dont-know-postal-code:hover,
+.cart-dont-know-postal-code,
+.shipping-calculate-link:hover,
+.shipping-calculate-link{
+    color: #000 !important;
 }
 
 /* ---------------------------------------------- Checkout email section ---------------------------------------------- */
