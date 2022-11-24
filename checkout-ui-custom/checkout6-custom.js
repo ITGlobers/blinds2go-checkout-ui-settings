@@ -25,25 +25,26 @@ const shoppingCart = {
   },
 
   toOrderFormBtn: function(){
-    const toOrderFormBtn = $('#cart-to-orderform')
+    const toOrderFormBtnContainer = $('.btn-place-order-wrapper')
 
-    toOrderFormBtn.text('Secure checkout')
+    const toOrderFormBtn = `
+    <a href="#orderform" id="to-checkout-btn">
+      <img class="payments-checkout" src="/arquivos/header-payments.svg"/>
+      <span>Secure checkout</span>
+      <img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />
+    </a>
+    `
 
-    toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
-    toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
+    const toOrderFormBtnExists = $('#to-checkout-btn')
 
+    if(toOrderFormBtnExists.length === 0){
+      toOrderFormBtnContainer.append(toOrderFormBtn)
+    }
   },
 
   mainCart: {
     init: function () {
       $('#cart-choose-products').prepend('<img src="/arquivos/left-arrow-white.svg" />')
-
-      // const toOrderFormBtn = $('#cart-to-orderform')
-
-      // toOrderFormBtn.text('Secure checkout')
-
-      // toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
-      // toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
 
       $('td.quantity-price').attr('style', 'display: inline !important')
 

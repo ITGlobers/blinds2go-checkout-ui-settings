@@ -261,9 +261,25 @@ th.quantity{
     justify-content: center;
     font-size: 18px;
     font-weight: 600;
+    padding: 15px 30px;
+    display: none;
 }
 
-#cart-to-orderform:hover{
+#to-checkout-btn{
+    background: #f38d18;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600; 
+    padding: 15px 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#to-checkout-btn:hover{
     background: #e5800c;
 }
 
@@ -457,6 +473,24 @@ tfoot td.info::before{
 .shipping-calculate-link:hover,
 .shipping-calculate-link{
     color: #000 !important;
+}
+
+#cart-to-orderform{
+    font-size: 0;
+}
+
+#cart-to-orderform::before{
+    font-size: 18px;
+    content: "Secure checkout";
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+}
+
+#cart-to-orderform::after{
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    content: url('/arquivos/right-arrow-white.svg');
 }
 
 /* ---------------------------------------------- Reviews section ---------------------------------------------- */
