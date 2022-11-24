@@ -198,13 +198,27 @@ const shoppingCart = {
 
   footerImages: {
     init: function(){
+
+      const footer = $('div[style="text-align:center"]')
+
+      footer.attr('id','cart-footer')
       
       const imagesContainer = `
         <div class="footer-images">
-          <img class="footer-image" src=""/>
-          <img class="footer-image" src=""/>
+          <a class="footer-logo" href="https://www.blinds-2go.co.uk/">
+            <img  src="/arquivos/b2g-logo.svg" />
+          </a>
+          <a class="footer-logo" href="https://www.curtains-2go.co.uk/">
+            <img src="/arquivos/c2g-logo.svg" />
+          </a>
         </div>
       `
+
+      const footerImagesExists = $('.footer-images')
+
+      if(footerImagesExists.length === 0){
+        footer.append(imagesContainer)
+      }
     }
   }
 }
@@ -216,6 +230,7 @@ const checkoutPage = {
       $('order-form-header').remove()
       $('.shopping-outer-reassurance').remove()
       $('.order-form-header').remove()
+      $('.outer-reviews-container').remove()
   },
 
   orderFormHeader: {
@@ -297,6 +312,7 @@ $(document).on('ready', function () {
       shoppingCart.secureCheckoutWarning.init()
       shoppingCart.storeReviews.init()
       shoppingCart.toOrderFormBtn()
+      shoppingCart.footerImages.init()
     }, 500)
   }
 
@@ -306,6 +322,7 @@ $(document).on('ready', function () {
       shoppingCart.mainCart.init()
       shoppingCart.summaryHeader.init()
       shoppingCart.secureCheckoutWarning.init()
+      shoppingCart.footerImages.init()
       checkoutPage.orderFormHeader.init()
       checkoutPage.clientInfo.init()
       checkoutPage.removeItems()
@@ -322,6 +339,7 @@ $(window).on('hashchange', function () {
       checkoutPage.clientInfo.init()
       shoppingCart.secureCheckoutWarning.init()
       checkoutPage.paymentButtonText.init()
+      shoppingCart.footerImages.init()
     }, 500)
   }
 
@@ -332,6 +350,8 @@ $(window).on('hashchange', function () {
       shoppingCart.summaryHeader.init()
       shoppingCart.removeItems()
       shoppingCart.secureCheckoutWarning.init()
+      shoppingCart.storeReviews.init()
+      shoppingCart.footerImages.init()
     }, 500)
   }
 })

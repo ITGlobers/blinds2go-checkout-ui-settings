@@ -1,5 +1,4 @@
 /* ---------------------------------------------- Global -------------------------------------------------------- */
-@import url('https://fonts.cdnfonts.com/css/raleway-5');
 
 @font-face {
     font-family: "Raleway";
@@ -286,7 +285,7 @@ th.quantity{
 .payments-checkout{
     width: 106px;
     height: 15px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .proceed-arrow{
@@ -419,6 +418,7 @@ tfoot td.info::before{
 .totalizers-list{
     border: none !important;
     padding: 0 !important;
+    margin-bottom: 10px;
 }
 
 .totalizers-list .monetary{
@@ -432,6 +432,10 @@ tfoot td.info::before{
 .totalizers-list .info::before{
     content: "Order subtotal";
     font-size: 16px !important;
+}
+
+.summary-totalizers tfoot{
+   border-top:  1px solid #eee;
 }
 
 .shipping-calculate{
@@ -572,6 +576,11 @@ tfoot td.info::before{
     padding: 0 0 30px 0 !important;
 }
 
+.client-profile-summary,
+.form-step .email{
+    color: #000 ;
+}
+
 .container-order-form{
     max-width: none !important;
     width: 100% !important;
@@ -597,6 +606,12 @@ tfoot td.info::before{
     padding: 15px !important;
 }
 
+.custom-cart-template-wrap h2{
+    color: #3b214f !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px !important;
+}
+
 .box-client-info-pf .client-notice{
     font-size: 20px;
     font-weight: 400;
@@ -617,12 +632,20 @@ tfoot td.info::before{
 }
 
 #go-to-shipping{
+    font-size: 16px;
+    font-family: 'Nunito Sans', sans-serif;
+    background: #e5800c !important;
     border-radius: 4px;
-    background: #0275d8 !important;
+    background: #f38d18 !important;
     border: none !important;
-    font-size: 18px;
     font-weight: 600;
 }
+
+#go-to-shipping:hover{
+    background: #e5800c !important;
+}
+
+
 
 .client-notice{
     margin-bottom: 30px !important;
@@ -643,11 +666,6 @@ tfoot td.info::before{
 }
 
 /* ---------------------------------------------- Checkout shipping section ---------------------------------------------- */
-#go-to-shipping{
-    font-size: 16px;
-    font-family: 'Nunito Sans', sans-serif;
-    background: #e5800c !important;
-}
 
 
 #shipping-data{
@@ -682,11 +700,15 @@ tfoot td.info::before{
 
 #btn-go-to-payment{
     border-radius: 4px;
-    background: #e5800c;
+    background: #f38d18;
     border: none;
     font-family: 'Nunito Sans';
     font-size: 15px;
     font-weight: 600;
+}
+
+#btn-go-to-payment:hover{
+    background: #e5800c;
 }
 
 .shipping-data span.accordion-toggle{
@@ -699,20 +721,12 @@ tfoot td.info::before{
     font-size: 20px;
     font-weight: 400;
     content: "Delivery address";
+    color: #000;
 }
 
 .link-change-shipping{
     color: #000 !important;
 }
-
-/* #shipping-data .step .accordion-heading::before{
-    content: url('/arquivos/van_purple.svg') !important;
-    width: 22px !important;
-    height: 22px !important;
-    margin-right: 35px;
-    transform: translate(4px, -6px)
-} */
-
 
 .shipping-data span::before{
     display: none !important;
@@ -722,10 +736,20 @@ tfoot td.info::before{
 /* ---------------------------------------------- Checkout shipping section ---------------------------------------------- */
 #payment-data-submit{
     border-radius: 4px;
-    background: #e5800c !important;
+    background: #f38d18 !important;
     font-family: 'Nunito Sans', sans-serif;
-    font-size: 15px;
+    font-size: 15px !important;
     font-weight: 600 !important;
+    border: none !important;
+}
+
+#payment-data-submit span{
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+#payment-data-submit:hover{
+    background: #e5800c !important;
 }
 
 #payment-data{
@@ -753,6 +777,42 @@ tfoot td.info::before{
     font-size: 20px;
     font-weight: 400;
     content: 'Payment details';
+    color: #000;
+}
+
+#shipping-data .icon-home{
+    display: inline !important;
+    margin-right: 5px;
+}
+
+#shipping-data .icon-home{
+    background-image: url('/arquivos/van_purple.svg');
+    /* content: url('/arquivos/van_purple.svg'); */
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+}
+
+.shp-option-text-label-single span,
+input#ship-complement,
+input#ship-postalCode,
+input#ship-receiverName{
+    color: #000 !important;
+}
+
+/* ------------------------------------------------------------ Footer - ----------------------------------------------- */
+
+#cart-footer{
+    max-width: 1280px !important;
+}
+
+.footer-images{
+    display: flex;
+    justify-content: space-between;
+}
+
+a.footer-logo{
+    width: 209px;
 }
 
 /* ------------------------------------------------------------- Mobile ----------------------------------------------- */
@@ -775,12 +835,18 @@ tfoot td.info::before{
         width: 98% !important;
         margin: 0 auto;
     }    
+
+    .reviews-container{
+        width: 100%;
+        padding: 55px 0;
+    }
 }
 
 @media screen and (max-width: 601px){
     .reassurance-bar{
         flex-direction: column;
         align-items: center;
+        padding-top: 1.4rem;
     }
 
     .reassurance-item{
