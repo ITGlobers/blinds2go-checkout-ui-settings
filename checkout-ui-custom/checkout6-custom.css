@@ -21,6 +21,21 @@ body{
     font-family: 'Nunito Sans', sans-serif;
 }
 
+/* ---------------------------------------------- Empty cart section -------------------------------------------------------- */
+
+.empty-cart-links{
+    display: none;
+}
+
+.empty-cart-message p,
+.empty-cart-title{
+    font-family: 'Raleway', sans-serif;
+}
+
+.empty-cart-title{
+    font-size: 22px;
+    font-weight: 400;
+}
 /* ---------------------------------------------- Header section -------------------------------------------------------- */
 
 #header-container{
@@ -342,6 +357,15 @@ td.quantity{
     display: none !important;
 }
 
+.product-name .seller{
+    color: #000;
+}
+
+td.quantity input{
+    font-family: 'Nunito Sans' !important;
+    font-size: 16px;
+}
+
 
 /* --------------------------------------------------------- Summary section ---------------------------------------------------- */
 
@@ -433,6 +457,59 @@ tfoot td.info::before{
 .shipping-calculate-link:hover,
 .shipping-calculate-link{
     color: #000 !important;
+}
+
+/* ---------------------------------------------- Reviews section ---------------------------------------------- */
+.outer-reviews-container{
+    max-width: 1280px;
+    margin: 0 auto 2rem auto;
+}
+
+.reviews-container{
+    padding: 55px 20px;
+    width: 50%;
+    background: #efefef;
+}
+
+.reviews-text-container,
+.reviews-header{
+    text-align: center;
+}
+
+.reviews-header{
+    padding: 10px 0 15px;
+}
+
+.reviews-text{
+    font-size: 16px;
+    color: #000;
+}
+
+.reviews-stars{
+    padding: 5px 0 25px;
+}
+
+.reviews-logos{
+    display: flex;
+    justify-content: space-around;
+    max-width: 500px;
+    margin: 0 auto;
+    border-top: 1px solid #ddd;
+}
+
+.reviews-stars{
+    display: flex;
+    justify-content: center;
+}
+
+.reviews-stars img{
+    max-width: 20%;
+}
+
+.trust-header{
+    font-weight: 700;
+    font-size: 31px;
+    color: #000;
 }
 
 /* ---------------------------------------------- Checkout email section ---------------------------------------------- */

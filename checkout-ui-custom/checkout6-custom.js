@@ -38,14 +38,16 @@ const shoppingCart = {
     init: function () {
       $('#cart-choose-products').prepend('<img src="/arquivos/left-arrow-white.svg" />')
 
-      const toOrderFormBtn = $('#cart-to-orderform')
+      // const toOrderFormBtn = $('#cart-to-orderform')
 
-      toOrderFormBtn.text('Secure checkout')
+      // toOrderFormBtn.text('Secure checkout')
 
-      toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
-      toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
+      // toOrderFormBtn.prepend('<img class="payments-checkout" src="/arquivos/header-payments.svg"/>')
+      // toOrderFormBtn.append('<img class="proceed-arrow" src="/arquivos/right-arrow-white.svg" />')
 
       $('td.quantity-price').attr('style', 'display: inline !important')
+
+      $('.empty-cart-title').text('Your Shopping Basket is Empty')
 
       const mainCart = $('.container-cart')
 
@@ -157,6 +159,52 @@ const shoppingCart = {
       }
 
     }
+  },
+
+  storeReviews: {
+    init: function(){
+
+      const checkoutContainer = $('.container-main.container-cart')
+      
+      const reviewsContainer = `
+      <div class="outer-reviews-container">
+        <div class="reviews-container">
+        <div class="reviews-header">
+          <span class="trust-header">Over 190,000 reviews</span>
+        </div>
+        <div class="reviews-text-container">
+          <p class="reviews-text">We're rated as 'Excellent'</p>
+        </div>
+        <div class="reviews-stars">
+          <img src="/arquivos/reviews_stars-5.svg" />
+        </div>
+        <div class="reviews-logos">
+          <img src="/arquivos/logo_reviews.svg" class="review-logo"/>
+          <img src="/arquivos/logo_trustpilot.svg" class="review-logo"/>
+          <img src="/arquivos/logo_reviewCentre.svg" class="review-logo"/>
+        </div>
+        </div>
+      </div>
+      `
+
+      const reviewsExists = $('.reviews-container')
+
+      if(reviewsExists.length === 0){
+        checkoutContainer.append(reviewsContainer)
+      }
+    }
+  },
+
+  footerImages: {
+    init: function(){
+      
+      const imagesContainer = `
+        <div class="footer-images">
+          <img class="footer-image" src=""/>
+          <img class="footer-image" src=""/>
+        </div>
+      `
+    }
   }
 }
 
@@ -246,6 +294,8 @@ $(document).on('ready', function () {
       shoppingCart.continueShopping.init()
       shoppingCart.summaryHeader.init()
       shoppingCart.secureCheckoutWarning.init()
+      shoppingCart.storeReviews.init()
+      shoppingCart.toOrderFormBtn()
     }, 500)
   }
 
