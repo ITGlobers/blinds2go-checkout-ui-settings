@@ -852,6 +852,12 @@ input#ship-receiverName{
     color: #000 !important;
 }
 
+#shipping-preview-container .srp-items
+#shipping-preview-container .srp-main-title{
+    color: #000;
+    font-family: 'Nunito Sans';
+}
+
 /* ------------------------------------------------------------ Footer - ----------------------------------------------- */
 
 #cart-footer{
