@@ -49,6 +49,13 @@ body{
     align-items: center;
 }
 
+.header-payments svg{
+    width: 207px;
+}
+
+.header-link{
+    width: 401px;
+}
 
 /* ---------------------------------------------- reassurance section -------------------------------------------------------- */
 .reassurance-bar{
@@ -127,6 +134,11 @@ body{
 /* ---------------------------------------------- Cart section -------------------------------------------------------- */
 .empty-cart-title{
     color: var(--main-color);
+}
+
+.shipping-preview-container{
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000;
 }
 
 .total-selling-price,
@@ -497,6 +509,15 @@ tfoot td.info::before{
     content: url('/arquivos/right-arrow-white.svg');
 }
 
+.hproduct .description .price.pull-right,
+.hproduct .product-name{
+    color: #000 !important;
+}
+
+.summary-cart-template-holder .cart-items{
+    padding: 7px 13px;
+}
+
 /* ---------------------------------------------- Reviews section ---------------------------------------------- */
 .outer-reviews-container{
     max-width: 1280px;
@@ -551,10 +572,6 @@ tfoot td.info::before{
 }
 
 /* ---------------------------------------------- Checkout email section ---------------------------------------------- */
-.client-profile-data .accordion-heading{
-    display: none;
-}
-
 #checkout-heading{
     font-size: 30px !important;
     font-weight: 600 !important;
@@ -572,8 +589,15 @@ tfoot td.info::before{
     padding-top: 0 !important;
 }
 
-.client-profile-data{
-    padding: 0 0 30px 0 !important;
+#client-profile-data{
+    background: #f7f6f7;
+    margin-bottom: 3rem;
+    border: 1px solid #e1e1e1
+}
+
+.accordion-group.client-profile-data {
+    margin-bottom: 0 !important;
+    background: #f7f6f7 !important;
 }
 
 .client-profile-summary,
@@ -587,11 +611,7 @@ tfoot td.info::before{
     background: #fff;
 }
 
-.box-client-info{
-    background: #f7f6f7;
-    border: 1px solid #e1e1e1 !important;
-    padding: 20px;
-}
+
 
 .custom-cart-template-wrap{
     background: #f7f6f7 !important;
@@ -619,12 +639,12 @@ tfoot td.info::before{
     display: flex;
 }
 
-.client-notice.notice::before{
+/* .client-notice.notice::before{
     content: url('/arquivos/person-main.svg');
     width: 22px;
     height: 22px;
     margin-right: 5px;
-}
+} */
 
 .box-client-info-pj,
 .box-client-info .newsletter{
@@ -665,8 +685,16 @@ tfoot td.info::before{
     color: #000 !important;
 }
 
-/* ---------------------------------------------- Checkout shipping section ---------------------------------------------- */
+.client-profile-data span.accordion-toggle span{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    color: #000;
+}
 
+/* ---------------------------------------------- Checkout shipping section ---------------------------------------------- */
+.box-client-info-pf p.client-notice{
+    display: none;
+}
 
 #shipping-data{
     background: #f7f6f7 !important;
@@ -698,6 +726,7 @@ tfoot td.info::before{
     margin-top: 3rem !important;
 }
 
+#go-to-payment,
 #btn-go-to-payment{
     border-radius: 4px;
     background: #f38d18;
@@ -707,6 +736,7 @@ tfoot td.info::before{
     font-weight: 600;
 }
 
+#go-to-payment:hover,
 #btn-go-to-payment:hover{
     background: #e5800c;
 }
@@ -731,6 +761,28 @@ tfoot td.info::before{
 .shipping-data span::before{
     display: none !important;
     border: none !important;
+}
+
+.client-profile-data .accordion-heading span.accordion-toggle span::before{
+    display: none !important;
+    border: none !important;
+}
+
+.client-profile-data .icon-user{
+    display: inline !important;
+    margin-right: 5px;
+}
+
+.client-profile-data .icon-user::after{
+    background-image: url('/arquivos/person-main.svg');
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+}
+
+.client-profile-data .accordion-toggle{
+    align-items: center;
+    display: flex;
 }
 
 /* ---------------------------------------------- Checkout shipping section ---------------------------------------------- */
@@ -787,7 +839,6 @@ tfoot td.info::before{
 
 #shipping-data .icon-home{
     background-image: url('/arquivos/van_purple.svg');
-    /* content: url('/arquivos/van_purple.svg'); */
     width: 22px;
     height: 22px;
     background-size: 22px 22px;
@@ -816,14 +867,6 @@ a.footer-logo{
 }
 
 /* ------------------------------------------------------------- Mobile ----------------------------------------------- */
-
-@media screen and (min-width: 960px){
-    img.header-logo{
-        width: 401px;
-        height: 72px
-    }
-}
-
 
 @media screen  and (max-width: 998px){
     .cart-template{
