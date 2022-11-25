@@ -49,12 +49,13 @@ body{
     align-items: center;
 }
 
-.header-payments svg{
+.header-payments{
     width: 207px;
 }
 
 .header-link{
     width: 401px;
+    display: flex;
 }
 
 /* ---------------------------------------------- reassurance section -------------------------------------------------------- */
@@ -885,7 +886,7 @@ a.footer-logo{
     }
 }
 
-@media screen and (max-width: 601px){
+@media screen and (max-width: 610px){
     .reassurance-bar{
         flex-direction: column;
         align-items: center;
@@ -904,5 +905,46 @@ a.footer-logo{
 
     .reassurance-title{
         text-align: center;
+    }
+
+    #header-container{
+        padding: 1rem !important;
+    }
+
+    .orderform-header-images{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 690px){
+
+    .v-custom-product-item-wrap{
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    td.quantity-price,
+    td.product-price{
+        margin-left: 90px !important;
+    }
+
+    td.product-price{
+        margin-bottom: 10px !important;
+    }
+
+    td.quantity-price{
+        margin-top: 10px !important;
+    }
+
+    .item-remove{
+        right: 2.5rem !important;
+        top: 0.3rem !important;
+    }
+}
+
+@media screen and (max-width: 1280px){
+    .order-form-header{
+        padding: 0 10px;
     }
 }
