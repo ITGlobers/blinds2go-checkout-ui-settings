@@ -25,7 +25,7 @@ const shoppingCart = {
     $('.checkout-outer-reassurance').remove()
     $('.checkout-header').remove()
 
-    if($('.checkout-outer-slider').length >= 1){
+    if ($('.checkout-outer-slider').length >= 1) {
       $('.checkout-outer-slider').remove()
     }
   },
