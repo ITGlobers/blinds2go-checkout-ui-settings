@@ -18,13 +18,16 @@ const shoppingCart = {
       `
 
       header.append(svgPayments)
-
     },
   },
 
   removeItems: function () {
     $('.checkout-outer-reassurance').remove()
     $('.checkout-header').remove()
+
+    if($('.checkout-outer-slider').length >= 1){
+      $('.checkout-outer-slider').remove()
+    }
   },
 
   quantityTotal: function () {
@@ -103,10 +106,67 @@ const shoppingCart = {
           </div>
         `
 
-      mainCart.prepend([reassuranceBar, orderFormHeader])
+      const mobileSlider = `
+      <div class="outer-slider">
+      <section class="slider-wrapper">
+ 
+      <button class="slide-arrow" id="slide-arrow-prev">
+        &#8249;
+      </button>
+       
+      <button class="slide-arrow" id="slide-arrow-next">
+        &#8250;
+      </button>
+       
+      <ul class="slides-container" id="slides-container">
+        <li class="slide">
+          <img class="reassurance-item-image five-icon" src="/arquivos/reassurance-5.svg" />
+          <div class="slider-text">
+              <p class="reassurance-title">5 year guarantee</p>
+              <p class="reassurance-subtitle">Peace of mind at no extra cost</p>
+          </div>
+        </li>
+        <li class="slide">
+          <img class="reassurance-item-image segtigo-icon" src="/arquivos/segtigo-logo.svg" />
+          <div class="slider-text">
+              <p class="reassurance-title">Fast, Easy & Safe</p>
+              <p class="reassurance-subtitle">100% Secure Checkout</p>
+          </div>
+        </li>
+        <li class="slide">
+          <img class="reassurance-item-image truck-icon" src="/arquivos/reassurance-truck.svg" />
+          <div class="slider-text">
+              <p class="reassurance-title">Free UK Delivery</p>
+              <p class="reassurance-subtitle">On all orders over £199</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    </div>
+      `
+
+      mainCart.prepend([reassuranceBar, mobileSlider, orderFormHeader])
 
       $('th.product').attr('id', 'cart-header-product')
     },
+  },
+
+  handleSlider: function () {
+    const sliderOuter = document.querySelector('outer-slider')
+    const slidesContainer = document.getElementById('slides-container')
+    const slide = document.querySelector('.slide')
+    const prevButton = document.getElementById('slide-arrow-prev')
+    const nextButton = document.getElementById('slide-arrow-next')
+
+    nextButton.addEventListener('click', (event) => {
+      const slideWidth = slide.clientWidth
+      slidesContainer.scrollLeft += slideWidth
+    })
+
+    prevButton.addEventListener('click', () => {
+      const slideWidth = slide.clientWidth
+      slidesContainer.scrollLeft -= slideWidth
+    })
   },
 
   continueShopping: {
@@ -224,6 +284,36 @@ const shoppingCart = {
       }
     },
   },
+
+  valuePropositionsSlider: {
+    init: function () {
+      const slider = `
+        <div class="slider">
+          <div class="slide">
+            <img src="/arquivos/reassurance-5.svg" />
+            <div class="">
+                <p class="reassurance-title">5 year guarantee</p>
+                <p class="reassurance-subtitle">Peace of mind at no extra cost</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img class="reassurance-item-image segtigo-icon" src="/arquivos/segtigo-logo.svg" />
+            <div class="reassurance-item-text">
+                <p class="reassurance-title">Fast, Easy & Safe</p>
+                <p class="reassurance-subtitle">100% Secure Checkout</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img class="reassurance-item-image truck-icon" src="/arquivos/reassurance-truck.svg" />
+            <div class="reassurance-item-text">
+                <p class="reassurance-title">Free UK Delivery</p>
+                <p class="reassurance-subtitle">On all orders over £199</p>
+            </div>
+          </div>
+        </div>
+      `
+    },
+  },
 }
 
 const checkoutPage = {
@@ -233,6 +323,7 @@ const checkoutPage = {
     $('.shopping-outer-reassurance').remove()
     $('.order-form-header').remove()
     $('.outer-reviews-container').remove()
+    $('.outer-slider').remove()
   },
 
   orderFormHeader: {
@@ -275,12 +366,51 @@ const checkoutPage = {
       </div>
     `
 
+      const mobileSlider = `
+    <div class="checkout-outer-slider">
+    <section class="slider-wrapper">
+
+    <button class="slide-arrow" id="slide-arrow-prev">
+      &#8249;
+    </button>
+     
+    <button class="slide-arrow" id="slide-arrow-next">
+      &#8250;
+    </button>
+     
+    <ul class="slides-container" id="slides-container">
+      <li class="slide">
+        <img class="reassurance-item-image five-icon" src="/arquivos/reassurance-5.svg" />
+        <div class="slider-text">
+            <p class="reassurance-title">5 year guarantee</p>
+            <p class="reassurance-subtitle">Peace of mind at no extra cost</p>
+        </div>
+      </li>
+      <li class="slide">
+        <img class="reassurance-item-image segtigo-icon" src="/arquivos/segtigo-logo.svg" />
+        <div class="slider-text">
+            <p class="reassurance-title">Fast, Easy & Safe</p>
+            <p class="reassurance-subtitle">100% Secure Checkout</p>
+        </div>
+      </li>
+      <li class="slide">
+        <img class="reassurance-item-image truck-icon" src="/arquivos/reassurance-truck.svg" />
+        <div class="slider-text">
+            <p class="reassurance-title">Free UK Delivery</p>
+            <p class="reassurance-subtitle">On all orders over £199</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+  </div>
+    `
+
       const reassuranceBarExists = $('.checkout-outer-reassurance')
 
       const orderFormHeaderExists = $('.checkout-outer-reassurance')
 
       if (reassuranceBarExists.length == 0 && orderFormHeaderExists.length == 0) {
-        checkoutContainer.prepend([reassuranceBar, orderFormHeader])
+        checkoutContainer.prepend([reassuranceBar, mobileSlider, orderFormHeader])
       }
     },
   },
@@ -313,6 +443,10 @@ $(document).on('ready', function () {
       shoppingCart.toOrderFormBtn()
       shoppingCart.footerImages.init()
     }, 500)
+
+    setTimeout(() => {
+      shoppingCart.handleSlider()
+    }, 1000)
   }
 
   if (
@@ -332,6 +466,10 @@ $(document).on('ready', function () {
       checkoutPage.removeItems()
       checkoutPage.paymentButtonText.init()
     }, 500)
+
+    setTimeout(() => {
+      shoppingCart.handleSlider()
+    }, 1000)
   }
 })
 
@@ -350,6 +488,10 @@ $(window).on('hashchange', function () {
       checkoutPage.paymentButtonText.init()
       shoppingCart.footerImages.init()
     }, 500)
+
+    setTimeout(() => {
+      shoppingCart.handleSlider()
+    }, 1000)
   }
 
   if (window.location.hash === '#/cart') {
@@ -362,6 +504,10 @@ $(window).on('hashchange', function () {
       shoppingCart.storeReviews.init()
       shoppingCart.footerImages.init()
     }, 500)
+
+    setTimeout(() => {
+      shoppingCart.handleSlider()
+    }, 1000)
   }
 })
 
