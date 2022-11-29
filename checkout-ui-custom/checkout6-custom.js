@@ -284,36 +284,6 @@ const shoppingCart = {
       }
     },
   },
-
-  valuePropositionsSlider: {
-    init: function () {
-      const slider = `
-        <div class="slider">
-          <div class="slide">
-            <img src="/arquivos/reassurance-5.svg" />
-            <div class="">
-                <p class="reassurance-title">5 year guarantee</p>
-                <p class="reassurance-subtitle">Peace of mind at no extra cost</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img class="reassurance-item-image segtigo-icon" src="/arquivos/segtigo-logo.svg" />
-            <div class="reassurance-item-text">
-                <p class="reassurance-title">Fast, Easy & Safe</p>
-                <p class="reassurance-subtitle">100% Secure Checkout</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img class="reassurance-item-image truck-icon" src="/arquivos/reassurance-truck.svg" />
-            <div class="reassurance-item-text">
-                <p class="reassurance-title">Free UK Delivery</p>
-                <p class="reassurance-subtitle">On all orders over £199</p>
-            </div>
-          </div>
-        </div>
-      `
-    },
-  },
 }
 
 const checkoutPage = {

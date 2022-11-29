@@ -391,6 +391,10 @@ td.quantity input {
   font-size: 16px;
 }
 
+td.product-image a {
+  margin-right: 0 !important;
+}
+
 /* --------------------------------------------------------- Summary section ---------------------------------------------------- */
 
 .summary-template-holder {
@@ -587,8 +591,6 @@ tfoot td.info::before {
 }
 
 #client-profile-data {
-  background: #f7f6f7;
-  margin-bottom: 3rem;
   border: none;
 }
 
@@ -633,13 +635,6 @@ tfoot td.info::before {
   color: #000;
   display: flex;
 }
-
-/* .client-notice.notice::before{
-    content: url('/arquivos/person-main.svg');
-    width: 22px;
-    height: 22px;
-    margin-right: 5px;
-} */
 
 .box-client-info-pj,
 .box-client-info .newsletter {
@@ -1047,10 +1042,22 @@ a.footer-logo {
   .outer-slider {
     display: flex;
   }
+
+  span.best-price {
+    display: none !important;
+  }
+
+  td.product-image {
+    padding-right: 0 !important;
+  }
 }
 
 @media screen and (max-width: 1280px) {
   .order-form-header {
     padding: 0 10px;
+  }
+
+  .checkout-header-text {
+    padding-left: 17px;
   }
 }
