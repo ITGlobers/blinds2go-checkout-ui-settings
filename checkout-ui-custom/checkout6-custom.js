@@ -423,6 +423,7 @@ $(document).on('ready', function () {
     window.location.hash === '#/email' ||
     window.location.hash === '#/profile' ||
     window.location.hash === '#/shipping' ||
+    window.location.hash === '#/orderform' ||
     window.location.hash === '#/payment'
   ) {
     setTimeout(() => {
@@ -448,6 +449,7 @@ $(window).on('hashchange', function () {
     window.location.hash === '#/email' ||
     window.location.hash === '#/profile' ||
     window.location.hash === '#/shipping' ||
+    window.location.hash === '#/orderform' ||
     window.location.hash === '#/payment'
   ) {
     setTimeout(() => {
